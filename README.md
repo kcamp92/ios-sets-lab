@@ -13,6 +13,12 @@ Input: heights of trees below:
 Output:
 `169.375`
 
+var treeHeights = [161, 182, 161, 154, 176, 170, 167, 171, 170, 174]
+var heights = Set(treeHeights)
+print(heights)
+var treeAverage = heights.reduce(0, +) / Set(treeHeights).count
+
+print(treeAverage)
 
 ## Question 2
 
@@ -21,6 +27,19 @@ Determine if a String is a pangram. A pangram is a string that contains every le
  e.g `"The quick brown fox jumps over the lazy dog"` is a pangram
  e.g `"The quick brown fox jumped over the lazy dog"` is NOT a pangram
 
+```
+var superSetAlphabet = "abcdefghijklmnopqrstuvwxyz"
+
+var one = "The quick brown fox jumps over the lazy dog"
+var two = "The quick brown fox jumped over the lazy dog"
+
+var pangram = Set(one.lowercased())
+var nonPangram = Set(two.lowercased())
+
+
+print(pangram.isSuperset(of: superSetAlphabet))
+print(nonPangram.isSuperset(of: superSetAlphabet))
+```
 
 ## Question 3
 
@@ -51,7 +70,33 @@ let arr2 = [1, 2, 3, 4, 5, 6]
 let arr3 = [5, 6, 7, 8, 9, 10, 11, 12]
 let arr4 = [1, 3, 4, 5, 6, 7, 9]
 ```
+```
+let arr1 = [2, 4, 5, 6, 8, 10, 12]
+let arr2 = [1, 2, 3, 4, 5, 6]
+let arr3 = [5, 6, 7, 8, 9, 10, 11, 12]
+let arr4 = [1, 3, 4, 5, 6, 7, 9]
 
+var arrayOfArrs = [arr1, arr2, arr3, arr4]
+
+//var uniqueArrayOfArrs = Set(arrayOfArrs)
+//
+//let set1: Set<Int> = []
+//
+//let setUnion = set1.union(uniqueArrayOfArrs)
+//
+//print(setUnion.sorted)
+
+var answerArray: [Int] = []
+var setArr: Set <Int> = []
+
+for i in arrayOfArrs {
+let set = Set(i)
+setArr = setArr.union (set)
+
+}
+answerArray = Array(setArr)
+print(arrayOfArrs.sorted)
+```
 
 ## Question 5
 
@@ -66,14 +111,23 @@ Perform the following set operations on the lists below:
 let list1: Set = [1, 3, 4, 6, 2, 7, 9]
 let list2: Set = [3, 7, 13, 10, 4]
 ```
+```
+let list1: Set = [1, 3, 4, 6, 2, 7, 9]
+let list2: Set = [3, 7, 13, 10, 4]
 
+var intersectResult = list1.intersection(list2)
+var differenceResult = list1.symmetricDifference(list2)
+var unionResult = list1.union(list2)
+var subtractResult = list1.subtracting(list2)
+var subtractResults = list2.subtracting(list1)
+```
 
 ## Question 6
 
 What output will be produced by the code below? Select one answer.
 
 ```swift
-var spaceships = Set()
+var spaceships = Set<String>()
 
 spaceships.insert("Serenity")
 spaceships.insert("Enterprise")
@@ -83,7 +137,7 @@ spaceships.insert("Serenity")
 print(spaceships.count)
 ```
 
-- 3
+- 3<----
 - 4
 - Nothing will be output
 - 0
@@ -97,8 +151,7 @@ print(spaceships.count)
 What output will be produced by the code below?
 
 ```swift
-var spaceships1 = Set()
-
+var spaceships1 = Set<String>
 spaceships1.insert("Serenity")
 spaceships1.insert("Enterprise")
 spaceships1.insert("TARDIS")
@@ -115,5 +168,5 @@ if spaceships1.isSubset(of: spaceships2) {
 - This code will compile but crash
 - "This is not a subset"
 - This code will not compile
-- "This is a subset"
+- "This is a subset" <---
 - Nothing will be output
